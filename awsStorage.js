@@ -8,7 +8,7 @@ export default class AWSStorage extends DataStorageProvider {
     stored in localStorage using inhereted functions storeToken()
     and storeTokenExpiry() from DataStorageProvider.
   */
-  authenicate() {
+  authorize() {
     // TODO
   }
 
