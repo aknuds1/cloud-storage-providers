@@ -3,7 +3,7 @@ import DataStorageProvider from './dataStorageProvider';
 export default class AWSStorage extends DataStorageProvider {
 
   /*
-    Details: Starts the authenication process/redirect.
+    Details: Starts the oAuth process/redirect.
     By end of this process you should have token and token expiry
     stored in localStorage using inhereted functions storeToken()
     and storeTokenExpiry() from DataStorageProvider.
