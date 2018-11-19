@@ -1,34 +1,30 @@
-import DataStorageProvider from './dataStorageProvider';
+import amplify from 'aws-amplify';
 
-export default class AWSStorage extends DataStorageProvider {
-
-  /*
-    Details: Starts the oAuth process/redirect.
-    By end of this process you should have token and token expiry
-    stored in localStorage using inhereted functions storeToken()
-    and storeTokenExpiry() from DataStorageProvider.
-  */
-  authorize() {
-    // TODO
+export default class AWSStorage {
+  constructor(conf) {
+    amplify.configure({
+      Auth: conf.auth,
+      Storage: {
+        ...conf.storage,
+        level: 'private'
+      }
+    });
+  }
+  
+  async authorize(username, password) {
+    await amplify.Auth.signIn(username, password)
+  }
+  
+  async getAllFiles() {
+    const objs = await amplify.Storage.list('', {level: 'private'});
+    return objs.map((file) => {
+      return file.key;
+    }).filter((path) => {
+      return path !== '';
+    });
   }
 
-  /*
-    Details: Retrieve list off all files that can be accessed
-    with token creadentials. You can check and obtain token with
-    inhereted functions isTokenValid() and getToken().
-    Returns: List<Objects> with paths and filenames
-  */
-  getAllFiles() {
-    // TODO
+  async getSharableLinkForFile(file) {
+    return await amplify.Storage.get(file);
   }
-
-  /*
-    Details: Create/obtain and return sharable link for specified file
-    from getAllFiles().
-    Returns: String
-  */
-  getSharableLinkForFile(file) {
-    // TODO
-  }
-
 }

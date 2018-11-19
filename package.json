@@ -1,0 +1,37 @@
+{
+  "name": "cloud-storage-providers",
+  "version": "0.0.1",
+  "description": "Ocean Protocol Cloud Storage Providers",
+  "main": "awsStorage.js",
+  "scripts": {
+    "test": "mochify --transform [ babelify --presets [ @babel/preset-env ] --plugins [ babel-plugin-rewire ] ]"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aknuds1/cloud-storage-providers.git"
+  },
+  "keywords": [
+    "oceanprotocol",
+    "aws"
+  ],
+  "author": "Arve Knudsen <arve.knudsen@gmail.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/aknuds1/cloud-storage-providers/issues"
+  },
+  "homepage": "https://github.com/aknuds1/cloud-storage-providers#readme",
+  "devDependencies": {
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
+    "babel-plugin-rewire": "^1.2.0",
+    "babelify": "^10.0.0",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "mochify": "^6.0.3",
+    "sinon": "^7.1.1"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "aws-amplify": "^1.1.10"
+  }
+}
